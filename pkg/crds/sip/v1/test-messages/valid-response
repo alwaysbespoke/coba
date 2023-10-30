@@ -1,0 +1,9 @@
+SIP/2.0 200 OK
+Via: SIP/2.0/TLS client.ANC.com:5061;branch = z9hG4bK74bf9
+From: Alice<sips:Alice@TTP.com>;tag = 1234567
+To: Bob<sips:Bob@TMC.com>
+Call-ID: 12345601@192.168.2.1
+CSeq: 1 INVITE
+Contact: <sips:Alice@client.ANC.com>
+Content-Length: 0 
+
