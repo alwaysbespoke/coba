@@ -25,7 +25,7 @@ type ExitManager struct {
 var instance *ExitManager
 
 // New returns a new ExitManager instance. ExitManager is a singleton
-func New() *ExitManager {
+func New() (*ExitManager, context.Context) {
 	// check if an instance exists
 	if instance != nil {
 		panic("exit instance already exists")
@@ -41,12 +41,7 @@ func New() *ExitManager {
 		callbacks: make(map[string]Callback),
 	}
 
-	return instance
-}
-
-// Context returns the cancellable context
-func (e *ExitManager) Context() context.Context {
-	return e.ctx
+	return instance, ctx
 }
 
 // Run starts listening for OS signals
