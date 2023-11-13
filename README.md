@@ -12,7 +12,8 @@ $ make up-local
 3. Verify installation.
 ```bash
 $ kubectl get pods -n alwaysbespoke
-NAMESPACE       NAME                                     READY   STATUS             RESTARTS          AGE
-alwaysbespoke   sip-server-5d46789454-xhpfh              1/1     Running            1 (21s ago)       66s
+NAME                          READY   STATUS             RESTARTS      AGE
+sbc-service-d96855f56-hd2lp   1/1     Running            0             13m
+sip-server-65d4f7d9fc-lw9md   1/1     Running            0             15m
 ```
 

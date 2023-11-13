@@ -2,7 +2,7 @@ codegen:
 	@bash code-generator/code-generator.sh
 
 sbc-service-image:
-	@docker build -f apps/sbc-service/deploy/local/sbc-service/Dockerfile -t coba .
+	@docker build -f apps/sbc-service/deploy/local/sbc-service/Dockerfile -t sbc-service .
 
 sbc-service-k8-local:
 	@kubectl apply -f apps/sbc-service/deploy/local/namespaces
@@ -11,7 +11,7 @@ sbc-service-k8-local:
 sbc-service-deploy-local: sbc-service-image sbc-service-k8-local
 
 sip-server-image:
-	@docker build -f apps/sip-server/deploy/local/sip-server/Dockerfile -t coba .
+	@docker build -f apps/sip-server/deploy/local/sip-server/Dockerfile -t sip-server .
 
 sip-server-k8-local:
 	@kubectl apply -f apps/sip-server/deploy/local/namespaces
