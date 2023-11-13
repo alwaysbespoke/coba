@@ -1,23 +1,24 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: coba
+  name: sip-server
   namespace: alwaysbespoke
   labels:
-    app: coba
+    app: sip-server
 spec:
   selector:
     matchLabels:
-      app: coba
+      app: sip-server
   replicas: 1 
   template:
     metadata:
       labels:
-        app: coba
+        app: sip-server
     spec:
       containers:
-      - name: coba
-        image: coba:latest
+      - name: sip-server
+        image: sip-server:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
+        - containerPort: 6000

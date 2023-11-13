@@ -1,13 +1,16 @@
 apiVersion: v1 
 kind: Service
 metadata:
-  name: coba
+  name: sip-server
   namespace: alwaysbespoke
 spec:
   type: ClusterIP
   selector:
-    app: coba
+    app: sip-server
   ports:
-  - name: http
+  - name: udp
     port: 5000
     targetPort: 5000
+  - name: tcp
+    port: 6000
+    targetPort: 6000

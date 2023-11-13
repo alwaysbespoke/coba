@@ -1,11 +1,11 @@
 codegen:
 	@bash code-generator/code-generator.sh
 
-image-local:
-	@docker build -f deploy/local/coba/Dockerfile -t coba .
+sip-server-image:
+	@docker build -f apps/sip-server/deploy/local/sip-server/Dockerfile -t coba .
 
-deploy-local:
-	@kubectl apply -f deploy/local/namespaces
-	@kubectl apply -f deploy/local/coba
+sip-server-k8-local:
+	@kubectl apply -f apps/sip-server/deploy/local/namespaces
+	@kubectl apply -f apps/sip-server/deploy/local/sip-server
 
-up-local: image-local deploy-local
+sip-server-deploy-local: sip-server-image sip-server-k8-local
