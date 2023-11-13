@@ -11,8 +11,8 @@ $ make up-local
 
 3. Verify installation.
 ```bash
-$ kubectl get pods -A
+$ kubectl get pods -n alwaysbespoke
 NAMESPACE       NAME                                     READY   STATUS             RESTARTS          AGE
-alwaysbespoke   coba-5d46789454-xhpfh                    1/1     Running            1 (21s ago)       66s
+alwaysbespoke   sip-server-5d46789454-xhpfh              1/1     Running            1 (21s ago)       66s
 ```
 
