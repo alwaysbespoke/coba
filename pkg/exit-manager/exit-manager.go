@@ -68,7 +68,7 @@ func (e *ExitManager) Exit(code int) {
 
 // Wait blocks until the done channel is closed
 func (e *ExitManager) Wait() {
-	e.ctx.Done()
+	<-e.ctx.Done()
 }
 
 // RegisterCallback registers a callback.
