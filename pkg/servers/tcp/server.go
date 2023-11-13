@@ -9,7 +9,7 @@ import (
 
 type Config struct {
 	Address    string `default:":6000"`
-	BufferSize int    `default:"1024"`
+	BufferSize int    `default:"1024" split_words:"true"`
 }
 
 type Server struct {

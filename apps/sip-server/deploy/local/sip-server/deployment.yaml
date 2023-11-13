@@ -19,6 +19,15 @@ spec:
       - name: sip-server
         image: sip-server:latest
         imagePullPolicy: Never
+        env:
+        - name: UDP_SERVER_ADDRESS
+          value: ":5000"
+        - name: UDP_SERVER_BUFFER_SIZE
+          value: "1024"
+        - name: TCP_SERVER_ADDRESS
+          value: ":6000"
+        - name: TCP_SERVER_BUFFER_SIZE
+          value: "1024"
         ports:
         - containerPort: 5000
         - containerPort: 6000
