@@ -26,13 +26,13 @@ type Config struct {
 }
 
 type Client interface {
-	AssignSBC() *SBC
-	GetSBC(id string) (*SBC, bool)
+	AssignSbc() *Sbc
+	GetSbc(id string) (*Sbc, bool)
 }
 
 type client struct {
 	*Input
-	sbcsCache map[string]*SBC
+	sbcsCache map[string]*Sbc
 	lock      *sync.RWMutex
 }
 
@@ -53,7 +53,7 @@ func New(input *Input) *client {
 	}
 
 	// create the SBCs map
-	sbcsCache := map[string]*SBC{}
+	sbcsCache := map[string]*Sbc{}
 
 	// populate the SBCs map
 	for _, sbc := range sbcList.Items {
@@ -71,7 +71,7 @@ func New(input *Input) *client {
 			continue
 		}
 
-		sbcsCache[sbc.Name] = &SBC{
+		sbcsCache[sbc.Name] = &Sbc{
 			Obj:  &sbc,
 			Conn: conn,
 		}
@@ -79,7 +79,7 @@ func New(input *Input) *client {
 
 	return &client{
 		Input:     input,
-		sbcsCache: map[string]*SBC{},
+		sbcsCache: map[string]*Sbc{},
 		lock:      &sync.RWMutex{},
 	}
 }
@@ -124,7 +124,7 @@ func (c *client) addFunc(obj interface{}) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	c.sbcsCache[sbc.Name] = &SBC{
+	c.sbcsCache[sbc.Name] = &Sbc{
 		Obj:  sbc,
 		Conn: conn,
 	}
@@ -143,9 +143,9 @@ func (c *client) deleteFunc(obj interface{}) {
 	delete(c.sbcsCache, sbc.Name)
 }
 
-// AssignSBC randomly returns an SBC instance from the SBC cache
+// AssignSbc randomly returns an SBC instance from the SBC cache
 // todo: improve the algorithm
-func (c *client) AssignSBC() *SBC {
+func (c *client) AssignSbc() *Sbc {
 	seed := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(seed)
 	randInt := r.Intn(len(c.sbcsCache))
@@ -165,8 +165,8 @@ func (c *client) AssignSBC() *SBC {
 	return nil
 }
 
-// GetSBC returns an SBC object from the SBCs cache and a bool
-func (c *client) GetSBC(id string) (*SBC, bool) {
+// GetSbc returns an SBC object from the SBCs cache and a bool
+func (c *client) GetSbc(id string) (*Sbc, bool) {
 	c.lock.RLock()
 	defer c.lock.RUnlock()
 

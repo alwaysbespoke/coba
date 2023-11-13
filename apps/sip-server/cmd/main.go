@@ -96,7 +96,7 @@ func main() {
 	// run the UDP server
 	go func() {
 		err := udpServer.Run()
-		logger.Errorf("server failure: %w", err)
+		logger.Errorf("UDP server failure: %w", err)
 	}()
 
 	// create the TCP handler
@@ -108,7 +108,7 @@ func main() {
 	// run the TCP server
 	go func() {
 		err := tcpServer.Run()
-		logger.Errorf("server failure: %w", err)
+		logger.Errorf("TCP server failure: %w", err)
 	}()
 
 	// wait until graceful shutdown has resolved before exiting the application
