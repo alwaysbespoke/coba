@@ -1,0 +1,23 @@
+apiVersion: alwaysbespoke.com/v1 
+kind: SBC
+metadata:
+  name: sbc-01
+  namespace: alwaysbespoke
+spec:
+  address: "123" 
+---
+apiVersion: alwaysbespoke.com/v1 
+kind: SBC
+metadata:
+  name: sbc-02
+  namespace: alwaysbespoke
+spec:
+  address: "456" 
+---
+apiVersion: alwaysbespoke.com/v1 
+kind: SBC
+metadata:
+  name: sbc-03
+  namespace: alwaysbespoke
+spec:
+  address: "789"

@@ -3,7 +3,7 @@ codegen:
 
 deploy-local:
 	@kubectl apply -f deploy/local/namespaces
-	@kubectl apply -f deploy/local/crd
+	@kubectl apply -f deploy/local/crds
 
 sbc-service-image:
 	@docker build -f apps/sbc-service/deploy/local/sbc-service/Dockerfile -t sbc-service .
@@ -22,3 +22,6 @@ sip-server-k8-local:
 sip-server-deploy-local: sip-server-image sip-server-k8-local
 
 up-local: deploy-local sip-server-deploy-local sbc-service-deploy-local
+
+deploy-example-crds:
+	@kubectl apply -f examples/crds
