@@ -3,6 +3,7 @@ codegen:
 
 deploy-local:
 	@kubectl apply -f deploy/local/namespaces
+	@kubectl apply -f deploy/local/crd
 
 sbc-service-image:
 	@docker build -f apps/sbc-service/deploy/local/sbc-service/Dockerfile -t sbc-service .
