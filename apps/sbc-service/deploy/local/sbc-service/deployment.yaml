@@ -19,5 +19,8 @@ spec:
       - name: sbc-service
         image: sbc-service:latest
         imagePullPolicy: Never
+        env:
+        - name: API_ADDRESS
+          value: ":8000"
         ports:
         - containerPort: 8000
